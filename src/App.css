@@ -21,7 +21,7 @@ body {
 	margin: 30px auto;
 	overflow: auto;
 	min-height: 500px;
-	border: 1px solid steelblue;
+	border: 1px solid rgb(54, 137, 206);
 	padding: 30px;
 	border-radius: 5px;
 }
@@ -30,7 +30,7 @@ body {
 	text-align: center;
 	justify-content: space-between;
 	margin-bottom: 20px;
-	color: steelblue;
+	color: rgb(25, 128, 212);
 }
 
 .btn {
@@ -63,5 +63,5 @@ body {
 }
 
 .correct {
-	color: green;
+	color: rgb(15, 131, 15);
 }

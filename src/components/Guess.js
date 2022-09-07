@@ -8,6 +8,10 @@ const Guess = ({ name, generatePokemon }) => {
 		generatePokemon();
 		setCorrectGuess("");
 	};
+	const resetInput = (e) => {
+		e.target.value = "";
+		setCorrectGuess("Correct!");
+	};
 	return (
 		<div>
 			<button className="btn" onClick={resetPokemon}>
@@ -19,7 +23,7 @@ const Guess = ({ name, generatePokemon }) => {
 				placeholder="Make a Guess!"
 				onChange={(e) =>
 					e.target.value.toLowerCase() === name
-						? setCorrectGuess("Correct!")
+						? resetInput(e)
 						: setCorrectGuess("")
 				}
 			/>
