@@ -1,11 +1,16 @@
 import React from "react";
+import { useState } from "react";
 
 const Guess = ({ name, generatePokemon }) => {
 	//Needs to update if the user types in the right answer
-	const [correctGuess, setCorrectGuess] = ["hi"];
+	const [correctGuess, setCorrectGuess] = useState("");
+	const resetPokemon = () => {
+		generatePokemon();
+		setCorrectGuess("");
+	};
 	return (
 		<div>
-			<button className="btn" onClick={generatePokemon}>
+			<button className="btn" onClick={resetPokemon}>
 				Reset
 			</button>
 			<input
@@ -13,12 +18,12 @@ const Guess = ({ name, generatePokemon }) => {
 				className="input"
 				placeholder="Make a Guess!"
 				onChange={(e) =>
-					e.target.value === name ? setCorrectGuess("Correct!") : null
+					e.target.value.toLowerCase() === name
+						? setCorrectGuess("Correct!")
+						: setCorrectGuess("")
 				}
 			/>
-			<h1> {correctGuess}</h1>
-
-			<h1> {name}</h1>
+			<h1 className="correct"> {correctGuess}</h1>
 		</div>
 	);
 };

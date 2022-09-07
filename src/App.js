@@ -1,14 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Header from "./components/Header";
 import Banner from "./components/Banner";
 import Guess from "./components/Guess";
+import Play from "./components/Play";
 import "./App.css";
 import pokemonImage from "./images/pokeball.jpg";
-import axios from "axios";
 
 function App() {
 	const [pokemonName, setPokemonName] = useState("");
-	const [bannerImage, setBannerImage] = useState("");
+	const [bannerImage, setBannerImage] = useState(pokemonImage);
 
 	//Generating a random pokemon and retrieving its species name and sprite
 	const generatePokemon = () => {
@@ -26,7 +26,8 @@ function App() {
 	return (
 		<div className="App">
 			<Header title="Who's that Pokemon?" />
-			<Banner bannerImage={bannerImage} pokemonImage={pokemonImage} />
+			<Banner bannerImage={bannerImage} />
+			<Play startGame={generatePokemon} />
 			<Guess name={pokemonName} generatePokemon={generatePokemon} />
 		</div>
 	);
