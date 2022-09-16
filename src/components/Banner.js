@@ -1,9 +1,13 @@
 import React from "react";
 
-const Banner = ({ bannerImage }) => {
+const Banner = ({ bannerImage, silhouette }) => {
 	return (
 		<div>
-			<img className="image" src={bannerImage} alt="Pokemon Banner" />
+			{silhouette ? (
+				<img className="image" src={bannerImage} alt="Pokemon Banner" />
+			) : (
+				<img className="blackImage" src={bannerImage} alt="Pokemon Banner" />
+			)}
 		</div>
 	);
 };

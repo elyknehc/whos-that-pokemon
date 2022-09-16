@@ -10,17 +10,11 @@ const Play = ({ startGame }) => {
 	};
 	return (
 		<div>
-			{
-				show ? (
-					<button className="playBtn" onClick={removeButton}>
-						Play
-					</button>
-				) : null
-				/*<button className="playBtn" onClick={startGame}>
+			{show ? (
+				<button className="playBtn" onClick={removeButton}>
 					Play
 				</button>
-                */
-			}
+			) : null}
 		</div>
 	);
 };

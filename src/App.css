@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
 
 * {
-	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
 }
@@ -13,6 +12,14 @@ body {
 .image {
 	height: 200px;
 	width: 200px;
+	margin: 5px;
+}
+
+.blackImage {
+	height: 200px;
+	width: 200px;
+	margin: 5px;
+	filter: brightness(0);
 }
 
 .App {
@@ -27,9 +34,8 @@ body {
 }
 
 .header {
+	margin: 20px;
 	text-align: center;
-	justify-content: space-between;
-	margin-bottom: 20px;
 	color: rgb(25, 128, 212);
 }
 
@@ -48,11 +54,22 @@ body {
 	background: green;
 	color: #fff;
 	border: none;
-	padding: 10px 20px;
-	margin: 10 px;
+	padding: 10px 30px;
+	margin: 10px;
 	border-radius: 5px;
 	cursor: pointer;
 	font-size: 15px;
+	font-family: inherit;
+}
+.ansBtn {
+	background: blue;
+	color: #fff;
+	border: none;
+	padding: 10px 20px;
+	margin: 10px;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 13px;
 	font-family: inherit;
 }
 
@@ -60,8 +77,19 @@ body {
 	padding: 10px 20px;
 	margin: 5px;
 	border-radius: 5px;
+	font-family: inherit;
 }
 
 .correct {
 	color: rgb(15, 131, 15);
+}
+
+.hidden {
+	padding: 10px;
+	color: white;
+}
+
+.answer {
+	font-size: 20px;
+	padding: 10px;
 }
