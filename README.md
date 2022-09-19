@@ -1,3 +1,5 @@
+Pokemon web app guessing game using fetch api: https://pokeapi.co/ Created using react, features several basic guessing features
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
