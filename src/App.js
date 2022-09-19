@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Header from "./components/Header";
-import Banner from "./components/Banner";
+import Footer from "./components/Footer";
 import Guess from "./components/Guess";
 import "./App.css";
 import pokemonImage from "./images/pokeball.jpg";
@@ -36,6 +36,7 @@ function App() {
 				generatePokemon={generatePokemon}
 				bannerImage={bannerImage}
 			/>
+			<Footer />
 		</div>
 	);
 }

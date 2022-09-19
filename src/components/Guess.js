@@ -6,7 +6,7 @@ import { useState } from "react";
 const Guess = ({ name, generatePokemon, bannerImage }) => {
 	//Needs to update if the user types in the right answer
 	const [correctGuess, setCorrectGuess] = useState("");
-	const [silhouette, setSilhouette] = useState(false);
+	const [silhouette, setSilhouette] = useState(true);
 	const [answer, setAnswer] = useState(true);
 	// If the play button is clicked, then we show reset buttons
 	//const [showButtons, setShowButtons] = useState(false);
@@ -29,11 +29,15 @@ const Guess = ({ name, generatePokemon, bannerImage }) => {
 		setSilhouette(true);
 	};
 
+	const Reveal = () => {
+		setSilhouette(true);
+	};
+
 	return (
 		<div>
 			<Banner bannerImage={bannerImage} silhouette={silhouette} />
 
-			<Play startGame={generatePokemon}></Play>
+			<Play startGame={generatePokemon} resetPokemon={resetPokemon} />
 
 			<button className="btn" onClick={resetPokemon}>
 				Reset
@@ -49,12 +53,17 @@ const Guess = ({ name, generatePokemon, bannerImage }) => {
 				}
 			/>
 			<h1 className="correct"> {correctGuess}</h1>
-
-			<button className="ansBtn " onClick={showAnswer}>
-				Answer
+			<button onClick={Reveal} className="revealBtn">
+				Reveal
 			</button>
+			<div>
+				<button className="ansBtn " onClick={showAnswer}>
+					Answer
+				</button>
+			</div>
+
 			{answer ? (
-				<div className="hidden">{name}!</div>
+				<div> </div>
 			) : (
 				<div className="answer"> {name.toUpperCase()}</div>
 			)}
