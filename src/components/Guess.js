@@ -8,6 +8,7 @@ const Guess = ({ name, generatePokemon, bannerImage }) => {
 	const [correctGuess, setCorrectGuess] = useState("");
 	const [silhouette, setSilhouette] = useState(true);
 	const [answer, setAnswer] = useState(true);
+	const [streak, setStreak] = useState(0);
 	// If the play button is clicked, then we show reset buttons
 	//const [showButtons, setShowButtons] = useState(false);
 
@@ -20,6 +21,7 @@ const Guess = ({ name, generatePokemon, bannerImage }) => {
 	const resetInput = (e) => {
 		e.target.value = "";
 		setCorrectGuess("Correct!");
+		setStreak(streak + 1);
 		setSilhouette(true);
 		setAnswer(true);
 	};
@@ -27,6 +29,7 @@ const Guess = ({ name, generatePokemon, bannerImage }) => {
 	const showAnswer = () => {
 		setAnswer(false);
 		setSilhouette(true);
+		setStreak(0);
 	};
 
 	const Reveal = () => {
@@ -36,8 +39,8 @@ const Guess = ({ name, generatePokemon, bannerImage }) => {
 	return (
 		<div>
 			<Banner bannerImage={bannerImage} silhouette={silhouette} />
-
 			<Play startGame={generatePokemon} resetPokemon={resetPokemon} />
+			<p className="guessStreak"> Answer Streak: {streak} </p>
 
 			<button className="btn" onClick={resetPokemon}>
 				Reset
