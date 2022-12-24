@@ -1,5 +1,4 @@
 import React from "react";
-import Play from "./Play";
 import Banner from "./Banner";
 import { useState } from "react";
 
@@ -9,9 +8,18 @@ const Guess = ({ name, generatePokemon, bannerImage }) => {
 	const [silhouette, setSilhouette] = useState(true);
 	const [answer, setAnswer] = useState(true);
 	const [streak, setStreak] = useState(0);
+	const [showPlayButton, setShowButton] = useState(true);
+	const [showRestButtons, setShowRestButton] = useState(false);
+	const [pokemonGeneration, setPokemonGeneration] = useState(649);
 	// If the play button is clicked, then we show reset buttons
 	//const [showButtons, setShowButtons] = useState(false);
 
+	const startGame = () => {
+		setShowButton(false);
+		generatePokemon(pokemonGeneration);
+		setSilhouette(false);
+		setShowRestButton(true);
+	};
 	const resetPokemon = () => {
 		generatePokemon();
 		setCorrectGuess("");
@@ -39,31 +47,76 @@ const Guess = ({ name, generatePokemon, bannerImage }) => {
 	return (
 		<div>
 			<Banner bannerImage={bannerImage} silhouette={silhouette} />
-			<Play startGame={generatePokemon} resetPokemon={resetPokemon} />
-			<p className="guessStreak"> Answer Streak: {streak} </p>
 
-			<button className="btn" onClick={resetPokemon}>
-				Reset
-			</button>
-			<input
-				type="text"
-				className="input"
-				placeholder="Make a Guess!"
-				onChange={(e) =>
-					e.target.value.toLowerCase() === name
-						? resetInput(e)
-						: setCorrectGuess("")
-				}
-			/>
-			<h1 className="correct"> {correctGuess}</h1>
-			<button onClick={Reveal} className="revealBtn">
-				Reveal
-			</button>
+			{/* <span>
+				{showRestButtons ? (
+					<span>
+						<button> Generation 1 </button>
+						<button> Generation 2 </button>
+						<button> Generation 3 </button>
+						<button> Generation 4 </button>
+						<button> Generation 5 </button>
+						<button> Generation 6 </button>
+					</span>
+				) : null}
+			</span> */}
+
+			<span>
+				{showRestButtons ? (
+					<p className="guessStreak"> Answer Streak: {streak} </p>
+				) : null}
+			</span>
+
 			<div>
-				<button className="ansBtn " onClick={showAnswer}>
-					Answer
-				</button>
+				{showPlayButton ? (
+					<button className="playBtn" onClick={startGame}>
+						Play
+					</button>
+				) : null}
 			</div>
+
+			<span>
+				{showRestButtons ? (
+					<button className="btn" onClick={resetPokemon}>
+						Reset
+					</button>
+				) : null}
+			</span>
+
+			<span>
+				{showRestButtons ? (
+					<input
+						type="text"
+						className="input"
+						placeholder="Make a Guess!"
+						onChange={(e) =>
+							e.target.value.toLowerCase() === name
+								? resetInput(e)
+								: setCorrectGuess("")
+						}
+					/>
+				) : null}
+			</span>
+
+			<h1 className="correct"> {correctGuess}</h1>
+
+			<span>
+				{showRestButtons ? (
+					<button onClick={Reveal} className="revealBtn">
+						Reveal
+					</button>
+				) : null}
+			</span>
+
+			<span>
+				{showRestButtons ? (
+					<div>
+						<button className="ansBtn " onClick={showAnswer}>
+							Answer
+						</button>
+					</div>
+				) : null}
+			</span>
 
 			{answer ? (
 				<div> </div>
